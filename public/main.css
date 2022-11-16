@@ -1,0 +1,20 @@
+body{
+    background-color: lightskyblue;
+}
+
+.title{
+    font-size: xx-large;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.laravel{
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+.subtexto{
+    font-size: large;
+    
+}

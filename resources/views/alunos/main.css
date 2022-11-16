@@ -1,0 +1,23 @@
+body{
+    background-color: lightskyblue
+}
+
+.image{
+    height: 60%;
+}
+
+.title{
+    font-size: xx-large;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.laravelred{
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.subtexto{
+    font-size: large;
+    
+}
