@@ -35,26 +35,25 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Endereco:</strong>
-                <textarea class="form-control" style="height:150px" name="endereco" placeholder="Endereco"></textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>CPF:</strong>
-                <input type="number" name="cpf" class="form-control" placeholder="CPF">
+                <input type="text" name="cpf" class="form-control" placeholder="CPF">
+            </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Endereco:</strong>
+                <input type="text" name="endereco" class="form-control" placeholder="Endereco">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Usuario:</strong>
-                <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+                <strong>Email:</strong>
+                <input type="text" name="email" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Senha:</strong>
-                <input type="password" name="senha" class="form-control" placeholder="Senha">
+                <input type="password" name="password" class="form-control" placeholder="Senha">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

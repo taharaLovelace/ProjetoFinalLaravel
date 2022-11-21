@@ -38,10 +38,10 @@ class ProfessoresController extends Controller
         //validar a entrada
         $request-> validate([
             'nome',
-            'endereco',
             'cpf',
-            'usuario',
-            'senha'
+            'endereco',
+            'email',
+            'password'
         ]);
         //criar novo produto
         Professores::create($request->all());

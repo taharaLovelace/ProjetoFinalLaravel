@@ -39,10 +39,11 @@ class AlunosController extends Controller
         //validar a entrada
         $request-> validate([
             'nome',
+            'cpf',
             'endereco',
+            'filme',
             'email',
-            'usuario',
-            'senha'
+            'password'
         ]);
         //criar novo produto
         Alunos::create($request->all());

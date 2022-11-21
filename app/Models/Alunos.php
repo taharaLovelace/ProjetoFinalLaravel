@@ -16,12 +16,13 @@ class Alunos extends Model
 
 
     protected $fillable = [
-        'nome',
-        'endereco',
-        'email',
-        'usuario',
-        'senha'
+            'nome',
+            'cpf',
+            'endereco',
+            'filme',
+            'email',
+            'password'
     ];
 
-    protected $hidden = 'senha';
+    protected $hidden = 'password';
 }

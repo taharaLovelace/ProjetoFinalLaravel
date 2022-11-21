@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('professores', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->integer('cpf');
+            $table->string('cpf', 100);
             $table->string('endereco', 100);
-            $table->string('usuario', 20)->unique();
-            $table->string('senha', 20);
+            $table->string('email', 100)->unique();
+            $table->string('password', 20);
             $table->timestamps();
         });
     }
