@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfessoresController;
+use App\Http\Controllers\AlunosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,19 @@ Route::get('/requisicao', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('alunos', AlunosController::class);
+Route::resource('professores', ProfessoresController::class);
+Route::resource('cursos', CursosController::class);
+
+Route::get('/home/createalunos', function() {
+    return view('alunos.create');
+});
+
+Route::get('/home/createprof', function() {
+    return view('professores.create');
+});
+
+Route::get('/home/createcursos', function(){
+    return view('cursos.create');
+});
