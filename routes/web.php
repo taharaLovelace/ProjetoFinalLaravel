@@ -28,10 +28,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('alunos', AlunosController::class);
-Route::resource('professores', ProfessoresController::class);
-Route::resource('cursos', CursosController::class);
 
+
+Route::get('/alunos/dashboard', [AlunosController::class, 'index']);
+Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);
 Route::get('/home/createalunos', function() {
     return view('alunos.create');
 });

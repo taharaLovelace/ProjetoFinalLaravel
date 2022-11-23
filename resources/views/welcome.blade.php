@@ -91,8 +91,8 @@
     <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Java</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="card-text">Curso de Java com foco em programacao orientada a objeto.</p>
+    <a href="#" class="btn btn-primary">Ver mais</a>
   </div>
 </div>
     </div>
@@ -100,8 +100,8 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Python</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text">Curso de Python com foco na area de Ciencia de Dados.</p>
+                <a href="#" class="btn btn-primary">Ver Mais</a>
             </div>
         </div>
     </div>
@@ -109,8 +109,8 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Laravel</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text">Curso de Laravel completo (FrontEnd e BackEnd), ideal para o mercado de web.</p>
+                <a href="#" class="btn btn-primary">Ver mais</a>
             </div>
         </div>
     </div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Professores;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfessoresController extends Controller
 {
@@ -14,7 +15,12 @@ class ProfessoresController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->role;
+        if ($user == '3'){
+            return view('professores.dashboard');
+        }else{
+            return view('welcome');
+        };
     }
 
     /**

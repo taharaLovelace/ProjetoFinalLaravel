@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Alunos extends Model
+class Alunos extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
 
-    protected $guard = 'alunos';
+    protected $table = 'alunos';
 
 
     protected $fillable = [
@@ -24,5 +24,13 @@ class Alunos extends Model
             'password'
     ];
 
-    protected $hidden = 'password';
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function getAuthPassword()
+    {
+      return $this->password;
+    }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alunos;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class AlunosController extends Controller
 {
@@ -14,8 +15,12 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        
-
+        $user = Auth::user()->role;
+        if ($user == '2'){
+            return view('alunos.dashboard');
+        }else{
+            return view('welcome');
+        };
     }
 
     /**
@@ -49,7 +54,7 @@ class AlunosController extends Controller
         Alunos::create($request->all());
 
         //redirecionar e enviar mensagem
-        return redirect()->route('alunos.index')-> with ('Sucesso!', 'Aluno Cadastrado com Sucesso');
+        return redirect()->route('welcome');
 
     }
 
