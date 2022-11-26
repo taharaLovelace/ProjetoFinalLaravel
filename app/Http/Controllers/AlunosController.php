@@ -102,4 +102,10 @@ class AlunosController extends Controller
     {
         //
     }
+
+    public function view () {
+        $users = User::latest()->paginate(15);
+
+        return view('secretaria.alunos', compact('users'))->with(request()->input('page'));
+    }
 }

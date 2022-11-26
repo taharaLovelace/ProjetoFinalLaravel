@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Painel de Controle Do Professor') }}</div>
+                <div class="card-header">{{ __('Painel de Controle da Secretaria') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,12 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('Bem vindo: ') }} {{ Auth::user()->name }}
+                    {{ __('Você logou com sucesso!') }}
                 </div>
-                
-                <a class="btn btn-primary" href="/home/createalunos" role="button">Editar Seus Dados</a>
-                <a class="btn btn-primary" href="/home/createprof" role="button">Se inscrever em Algum curso</a>
-                <a class="btn btn-primary" href="/home/createcursos" role="button">ZZZZZZZZZZZZZZZZZZZZZZ</a>
+                <a class="btn btn-primary" href="/home/createalunos" role="button">Cadastrar Aluno</a>
+                <a class="btn btn-primary" href="/home/createprof" role="button">Cadastrar Professor</a>
+                <a class="btn btn-primary" href="/home/createcursos" role="button">Cadastrar Novo Curso</a>
             </div>
         </div>
     </div>

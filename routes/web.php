@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\SecretariaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/alunos/dashboard', [AlunosController::class, 'index']);
+Route::get('/secretaria/dashboard', [SecretariaController::class, 'index']);
+Route::get('/secretaria/alunos', [AlunosController::class, 'view']);
 Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);
+Route::get('/register', [SecretariaController::class, 'registro']);
+
 Route::get('/home/createalunos', function() {
     return view('alunos.create');
 });
@@ -43,3 +48,7 @@ Route::get('/home/createprof', function() {
 Route::get('/home/createcursos', function(){
     return view('cursos.create');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
