@@ -42,6 +42,11 @@ Gerar a key do projeto Laravel
 php artisan key:generate
 ```
 
+Realizar as Migrações
+```sh
+php artisan migrate
+```
+
 
 
 
