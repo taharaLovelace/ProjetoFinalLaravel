@@ -12,7 +12,9 @@ class Curso extends Model
     protected $fillable = [
         'name',
         'desccomp',
-        'decsimp',
+        'descsimp',
+        'minimo',
+        'maximo',
     ];
 
     

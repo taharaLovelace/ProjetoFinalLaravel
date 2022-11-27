@@ -1,4 +1,4 @@
-@extends('home')
+@extends('layouts.paginainicial')
 
 @section('content')
 <div class="row">
@@ -45,6 +45,27 @@
             <div class="form-group">
                 <strong>Descricao Simples:</strong>
                 <input type="text" name="descsimp" class="form-control" placeholder="Descricao Simples">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Minimo de Alunos:</strong>
+                <input type="number" name="minimo" class="form-control" placeholder="Minimo de Alunos">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Maximo de Alunos:</strong>
+                <input type="number" name="maximo" class="form-control" placeholder="Maximo de Alunos">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Status:</strong>
+                <input type="number" name="status" class="form-control" placeholder="Status">
             </div>
         </div>
 

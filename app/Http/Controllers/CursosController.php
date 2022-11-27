@@ -39,7 +39,8 @@ class CursosController extends Controller
          $request-> validate([
             'name',
             'desccomp',
-            'decsimp'
+            'descsimp',
+            
         ]);
         //criar novo produto
         Curso::create($request->all());
@@ -95,7 +96,7 @@ class CursosController extends Controller
     }
 
     public function view () {
-        $users = User::latest()->paginate(15);
+        $cursos = Curso::latest()->paginate(15);
 
         return view('secretaria.cursos', compact('cursos'))->with(request()->input('page'));
     }

@@ -4,10 +4,10 @@
   <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Lista de Todos os Alunos</h2>
+                <h2>Lista de Todos os Professores</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('register') }}"> Criar Novo Aluno</a>
+                <a class="btn btn-success" href="{{ route('register') }}"> Criar Novo Professor</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <th width="280px">Action</th>
         </tr>
         @foreach ($users as $user)
-        @if ($user->role == 2)
+        @if ($user->role == 3)
         <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>

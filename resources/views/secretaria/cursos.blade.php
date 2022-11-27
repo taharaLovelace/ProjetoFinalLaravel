@@ -4,7 +4,7 @@
   <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Lista de Todos os Alunos</h2>
+                <h2>Lista de Todos os Cursos</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('register') }}"> Criar Novo Aluno</a>
@@ -22,26 +22,17 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Email</th>
-            <th>Endereco</th>
-            <th>CPF</th>
-            <th>Filme</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($users as $user)
-        @if ($user->role == 2)
+        @foreach ($cursos as $curso)
         <tr>
-            <td>{{ $user->id }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->endereco }}</td>
-            <td>{{ $user->cpf }}</td>
-            <td>{{ $user->filme }}</td>
+            <td>{{ $curso->id }}</td>
+            <td>{{ $curso->name }}</td>
             <td>
                 
-            <form action="{{ route('user.destroy',$user->id) }}" method="POST">
-                    <a class="btn" style="background-color:green" href="{{ route('user.show',$user->id) }}">Mostrar</a>
-                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Editar</a>
+            <form action="{{ route('curso.destroy',$curso->id) }}" method="POST">
+                    <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Mostrar</a>
+                    <a class="btn btn-primary" href="{{ route('curso.edit',$curso->id) }}">Editar</a>
                     
                     @csrf
                     @method('DELETE')
@@ -49,10 +40,9 @@
                 </form>
             </td>
         </tr>
-        @endif
         @endforeach
 
     </table>
-    {{ $users->links() }}
+    {{ $cursos->links() }}
 
 @endsection
