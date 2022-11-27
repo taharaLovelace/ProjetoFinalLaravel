@@ -16,4 +16,8 @@ class Curso extends Model
         'minimum',
         'maximum',
     ];
+
+    public function users(){
+        return $this->belongsTomany('App\Models\User');
+    }
 }

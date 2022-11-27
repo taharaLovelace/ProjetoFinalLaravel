@@ -39,7 +39,7 @@
                 <p class="card-date">27/11/2022</p>
                 <h5 class="card-title">{{ $curso->name }}</h5>
                 <p class="card-participants">{{ $curso->descriptionsimple }}</p>
-                <p class="card-participants">X Participantes</p>
+                <p class="card-participants">{{ count($curso->users) }} Participantes</p>
                 <a href="/cursos/{{ $curso->id }}" class="btn btn-primary">Saber mais</a>
             </div>
         </div>

@@ -43,12 +43,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/alunos/dashboard', [AlunosController::class, 'index']);                    //dashboard principal alunos
 Route::resource('user',AlunosController::class);
 
+
+
 //ROTAS DE SECRETARIA
 Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria
 Route::get('/secretaria/alunos', [AlunosController::class, 'view'])->middleware('secretaria');                    //lista alunos
 Route::get('/secretaria/professores', [ProfessoresController::class, 'view'])->middleware('secretaria');          //lista professores
 Route::get('/secretaria/cursos', [CursoController::class, 'view'])->middleware('secretaria');  
 Route::get('/register', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos e professores
+
+
 
 //ROTAS DE PROFESSORES
 Route::resource('professores',ProfessoresController::class);
@@ -58,3 +62,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('curso',CursoController::class);
+
+Route::post('/cursos/join/{id}', [CursoController::class, 'joinCurso'])->middleware('auth');;

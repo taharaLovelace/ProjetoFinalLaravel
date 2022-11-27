@@ -90,5 +90,14 @@ class CursoController extends Controller
             return redirect('/secretaria/cursos')->with('Sucesso','Curso adicionado com sucesso');
     }
 
+    public function joinCurso($id) {
+        $user = auth()->user();
+
+        $user->cursos()->attach($id);
+
+        $curso = Curso::findOrFail($id);
+
+        return redirect('/cursos')->with('msg', 'Voce se inscreveu no curso ' . $curso->name);
+    }
 }
 

@@ -22,9 +22,12 @@
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $curso->name }}</h1>
-                <p class="events-participants"><ion-icon name="people-outline"></ion-icon> X Participantes</p>
+                <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{ count($curso->users) }} Participantes</p>
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: </p>
-                <a href="#" class="btn btn-primary" id="curso-submit">Participar do Curso</a>
+                <form action="/cursos/join/{{ $curso->id }}" method="POST">
+                @csrf
+                <a href="/cursos/join/{{ $curso->id }}" class="btn btn-primary" id="curso-submit" onclick="event.preventDefault(); this.closest('form').submit();">Participar do Curso</a>
+                </form>
             </div>
              <div class="col-md-12" id="description-container">
                 <h3>Sobre o curso</h3>

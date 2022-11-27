@@ -124,4 +124,7 @@ class AlunosController extends Controller
 
         return view('secretaria.alunos', compact('users'))->with(request()->input('page'));
     }
+
+    
 }
+
