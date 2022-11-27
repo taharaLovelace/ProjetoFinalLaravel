@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.barrainicial')
 
 @section('content')
+@if(Auth::check() && Auth::user()->role == 1)
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -172,6 +173,10 @@
         </div>
     </div>
 </div>
+@else
+<h1>Você não tem permissão!</h1>
+<a href="/" class="btn btn-primary">Retornar</a>
+@endif
 @endsection
 <script>
     

@@ -47,6 +47,12 @@ Realizar as Migrações
 php artisan migrate
 ```
 
+Inserir dados na database
+```sh
+php artisan migrate --seed
+```
+
+
 
 
 
