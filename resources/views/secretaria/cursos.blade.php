@@ -32,16 +32,16 @@
         <tr>
             <td>{{ $curso->id }}</td>
             <td>{{ $curso->name }}</td>
-            <td>{{ $curso->descriptionfullp }}</td>
+            <td>{{ $curso->descriptionfull }}</td>
             <td>{{ $curso->descriptionsimple }}</td>
-            <td>{{ $curso->min }}</td>
-            <td>{{ $curso->max }}</td>
+            <td>{{ $curso->minimum }}</td>
+            <td>{{ $curso->maximum }}</td>
 
             <td>
                 
-            <form action="{{ route('user.destroy',$user->id) }}" method="POST">
-                    <a class="btn" style="background-color:green" href="{{ route('user.show',$user->id) }}">Mostrar</a>
-                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Editar</a>
+            <form action="{{ route('curso.destroy',$curso->id) }}" method="POST">
+                    <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Mostrar</a>
+                    <a class="btn btn-primary" href="{{ route('curso.edit',$curso->id) }}">Editar</a>
                     
                     @csrf
                     @method('DELETE')
@@ -49,10 +49,9 @@
                 </form>
             </td>
         </tr>
-        @endif
         @endforeach
 
     </table>
-    {{ $users->links() }}
+    {{ $cursos->links() }}
 
 @endsection

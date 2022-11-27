@@ -5,10 +5,10 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar aluno</h2>
+                <h2>Editar Curso</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/secretaria/alunos"> Voltar</a>
+                <a class="btn btn-primary" href="/secretaria/cursos"> Voltar</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         </div>
     @endif
 
-    <form action="{{ route('user.update',$user->id) }}" method="POST">
+    <form action="{{ route('curso.update',$curso->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -32,36 +32,30 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nome:</strong>
-                    <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="nome">
+                    <input type="text" name="name" value="{{ $curso->name }}" class="form-control" placeholder="nome">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>CPF:</strong>
-                    <input type="text" name="cpf" value="{{ $user->cpf }}" class="form-control" placeholder="CPF">
+                    <strong>Descrição completa:</strong>
+                    <input type="text" name="descriptionfull" value="{{ $curso->descriptionfull }}" class="form-control" placeholder="CPF">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Endereco:</strong>
-                    <input type="text" name="endereco" value="{{ $user->endereco }}" class="form-control" placeholder="Endereco">
+                    <strong>Descrição Simples:</strong>
+                    <input type="text" name="descriptionsimple" value="{{ $curso->descriptionsimple }}" class="form-control" placeholder="Endereco">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Filmes:</strong>
-                    <textarea class="form-control" style="height:150px" name="filme" placeholder="Filmes">{{ $user->filme }}</textarea>
+                    <strong>Minimo:</strong>
+                    <input type="number" name="minimum" value="{{ $curso->minimum }}" class="form-control" placeholder="Email">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Email:</strong>
-                    <input type="text" name="email" value="{{ $user->email }}" class="form-control" placeholder="Email">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Senha:</strong>
-                    <input type="password" name="password" value="{{ $user->password }}" class="form-control" placeholder="Senha">
+                    <strong>Maximo:</strong>
+                    <input type="number" name="maximum" value="{{ $curso->maximum }}" class="form-control" placeholder="Email">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center my-3">

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\AlunosController;
 use App\Http\Controllers\SecretariaController;
-use App\Http\Controllers\CursosController;
+use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\CursoController;
+
 
 
 Route::get('/', function () {
@@ -47,7 +47,7 @@ Route::resource('user',AlunosController::class);
 Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria
 Route::get('/secretaria/alunos', [AlunosController::class, 'view'])->middleware('secretaria');                    //lista alunos
 Route::get('/secretaria/professores', [ProfessoresController::class, 'view'])->middleware('secretaria');          //lista professores
-Route::get('/secretaria/cursos', [CursoController::class, 'show'])->middleware('secretaria');  
+Route::get('/secretaria/cursos', [CursoController::class, 'view'])->middleware('secretaria');  
 Route::get('/register', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos e professores
 
 //ROTAS DE PROFESSORES
@@ -56,3 +56,5 @@ Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);  
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('curso',CursoController::class);

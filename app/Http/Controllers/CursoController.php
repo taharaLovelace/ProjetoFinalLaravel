@@ -54,5 +54,41 @@ class CursoController extends Controller
 
     }
 
+    public function view () {
+        $cursos = Curso::latest()->paginate(15);
+
+        return view('secretaria.cursos', compact('cursos'))->with(request()->input('page'));
+    }
+
+    public function destroy(Curso $curso)
+    {
+        //
+    }
+
+    public function edit(Curso $curso)
+    {
+        return view('cursos.edit', compact('curso'));
+    }
+
+    
+    public function update(Request $request, Curso $curso)
+    {
+            //validando o input
+            $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'descriptionfull' => ['required', 'string', 'max:255'],
+            'descriptionsimple' => ['required', 'string', 'max:255'],
+            'minimum' => ['required', 'integer'],
+            'maximum' => ['required', 'integer'],
+
+                ]);
+        
+            //adicionando novo aluno
+            $curso->update($request->all()); ///esse comando faz o update do aluno na databse
+        
+            ///orientando o usuário
+            return redirect('/secretaria/cursos')->with('Sucesso','Curso adicionado com sucesso');
+    }
+
 }
 
