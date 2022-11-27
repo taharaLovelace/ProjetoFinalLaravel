@@ -27,4 +27,11 @@ class SecretariaController extends Controller
             return view('welcome');
         };
     }
+
+    public function joinCurso($id) {
+        $user = auth()->user();
+        $user->cursos()->attach($id);
+        $event = Event::findOrFail($id);
+        return redirect('/dashboard');
+    }
 }

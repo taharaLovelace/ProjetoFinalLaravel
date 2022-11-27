@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cursos;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursosController extends Controller
@@ -37,14 +37,15 @@ class CursosController extends Controller
     {
          //validar a entrada
          $request-> validate([
-            'nome',
-            'id'
+            'name',
+            'desccomp',
+            'decsimp'
         ]);
         //criar novo produto
-        Cursos::create($request->all());
+        Curso::create($request->all());
 
         //redirecionar e enviar mensagem
-        return redirect()->route('cursos.index')-> with ('Sucesso!', 'Curso Cadastrado com Sucesso');
+        return redirect()->route('curso.index')-> with ('Sucesso!', 'Curso Cadastrado com Sucesso');
 
     }
 
@@ -54,7 +55,7 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function show(Cursos $cursos)
+    public function show(Curso $curso)
     {
         //
     }
@@ -65,7 +66,7 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cursos $cursos)
+    public function edit(Curso $curso)
     {
         //
     }
@@ -77,7 +78,7 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cursos $cursos)
+    public function update(Request $request, Curso $curso)
     {
         //
     }
@@ -88,8 +89,14 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cursos $cursos)
+    public function destroy(Curso $curso)
     {
         //
+    }
+
+    public function view () {
+        $users = User::latest()->paginate(15);
+
+        return view('secretaria.cursos', compact('cursos'))->with(request()->input('page'));
     }
 }

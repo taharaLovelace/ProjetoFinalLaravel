@@ -101,4 +101,12 @@ class ProfessoresController extends Controller
     {
         //
     }
+
+    public function view () {
+        $users = User::latest()->paginate(15);
+
+        return view('secretaria.professores', compact('users'))->with(request()->input('page'));
+    }
+
+   
 }

@@ -37,7 +37,17 @@
             <td>{{ $user->endereco }}</td>
             <td>{{ $user->cpf }}</td>
             <td>{{ $user->filme }}</td>
-      
+            <td>
+                
+            <form action="{{ route('user.destroy',$user->id) }}" method="POST">
+                    <a class="btn" style="background-color:green" href="{{ route('user.show',$user->id) }}">Mostrar</a>
+                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Editar</a>
+                    
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         @endif
         @endforeach

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfessoresController;
 use App\Http\Controllers\AlunosController;
 use App\Http\Controllers\SecretariaController;
+use App\Http\Controllers\CursosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,26 +30,45 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//ROTAS DE ALUNOS
+Route::get('/alunos/dashboard', [AlunosController::class, 'index']);                    //dashboard principal alunos
+Route::resource('user',AlunosController::class);
 
 
-Route::get('/alunos/dashboard', [AlunosController::class, 'index']);
-Route::get('/secretaria/dashboard', [SecretariaController::class, 'index']);
-Route::get('/secretaria/alunos', [AlunosController::class, 'view']);
-Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);
-Route::get('/register', [SecretariaController::class, 'registro']);
 
-Route::get('/home/createalunos', function() {
-    return view('alunos.create');
-});
 
-Route::get('/home/createprof', function() {
-    return view('professores.create');
-});
 
-Route::get('/home/createcursos', function(){
+
+//ROTAS DE SECRETARIA
+Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria
+Route::get('/secretaria/alunos', [AlunosController::class, 'view'])->middleware('secretaria');                    //lista alunos
+Route::get('/secretaria/professores', [ProfessoresController::class, 'view'])->middleware('secretaria');          //lista professores
+Route::get('/register', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos e professores
+Route::get('/secretaria/createcursos', function(){                                      //criacao de novos cursos
     return view('cursos.create');
 });
+Route::post('/curso/join/{id}', [SecretariaController::class, 'joinCurso']);
+
+
+
+
+//ROTAS DE PROFESSORES
+Route::resource('professores',ProfessoresController::class);
+Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);          //dashboard principal professores
+
+
+
+
+
+
+//ROTAS DE CURSOS
+Route::resource('curso',CursosController::class);
+
+
+
+
+
+
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

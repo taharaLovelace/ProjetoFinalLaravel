@@ -16,9 +16,9 @@
 
                     {{ __('Você logou com sucesso!') }}
                 </div>
-                <a class="btn btn-primary" href="/home/createalunos" role="button">Cadastrar Aluno</a>
-                <a class="btn btn-primary" href="/home/createprof" role="button">Cadastrar Professor</a>
-                <a class="btn btn-primary" href="/home/createcursos" role="button">Cadastrar Novo Curso</a>
+                <a class="btn btn-primary" href="/register" role="button">Cadastrar Novo Usuario</a>
+                <a class="btn btn-primary" href="/secretaria/createcursos" role="button">Cadastrar Novo Curso</a>
+        
             </div>
         </div>
     </div>

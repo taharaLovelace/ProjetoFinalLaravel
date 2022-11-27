@@ -64,9 +64,9 @@ class AlunosController extends Controller
      * @param  \App\Models\Alunos  $alunos
      * @return \Illuminate\Http\Response
      */
-    public function show(Alunos $alunos)
+    public function show(User $user)
     {
-        //
+        return view('alunos.show', compact ('user'));
     }
 
     /**
@@ -75,9 +75,9 @@ class AlunosController extends Controller
      * @param  \App\Models\Alunos  $alunos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alunos $alunos)
+    public function edit(User $user)
     {
-        //
+        return view('alunos.edit', compact('user'));
     }
 
     /**
@@ -87,9 +87,25 @@ class AlunosController extends Controller
      * @param  \App\Models\Alunos  $alunos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alunos $alunos)
+    public function update(Request $request, User $user)
     {
-        //
+            //validando o input
+            $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'endereco' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'string', 'max:255'],
+            'filme' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        
+                
+                ]);
+        
+            //adicionando novo aluno
+            $user->update($request->all()); ///esse comando faz o update do aluno na databse
+        
+            ///orientando o usuário
+            return redirect('/secretaria/alunos')->with('Sucesso','Aluno adicionado com sucesso');
     }
 
     /**
@@ -98,7 +114,7 @@ class AlunosController extends Controller
      * @param  \App\Models\Alunos  $alunos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alunos $alunos)
+    public function destroy(User $user)
     {
         //
     }
