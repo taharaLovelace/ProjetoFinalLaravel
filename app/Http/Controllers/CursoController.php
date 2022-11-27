@@ -42,7 +42,7 @@ class CursoController extends Controller
        
         $curso->save();
 
-        return redirect('/')->with('msg', 'Curso criado com sucesso!');
+        return redirect('/secretaria/dashboard')->with('msg', 'Curso criado com sucesso!');
 
     }
 

@@ -28,7 +28,7 @@ Route::get('/cursos', [CursoController::class, 'index']);
 
 Route::get('/secretaria/createcursos', [CursoController::class, 'create'])->middleware('secretaria'); 
 Route::post('/cursos', [CursoController::class, 'store']);
-Route::get('/secretaria/cursos/{id}', [CursoController::class, 'show']);
+Route::get('cursos/{id}', [CursoController::class, 'show']);
 
 Route::get('/requisicao', function () {
     $json = \Illuminate\Support\Facades\Http::get('https://viacep.com.br/ws/01001000/json/')->body();
@@ -47,6 +47,7 @@ Route::resource('user',AlunosController::class);
 Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria
 Route::get('/secretaria/alunos', [AlunosController::class, 'view'])->middleware('secretaria');                    //lista alunos
 Route::get('/secretaria/professores', [ProfessoresController::class, 'view'])->middleware('secretaria');          //lista professores
+Route::get('/secretaria/cursos', [CursoController::class, 'show'])->middleware('secretaria');  
 Route::get('/register', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos e professores
 
 //ROTAS DE PROFESSORES

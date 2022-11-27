@@ -28,9 +28,6 @@
               <li class="nav-item">
                 <a href="/cursos" class="nav-link">Cursos Disponíveis</a>
               </li>
-              <li class="nav-item">
-                <a href="/secretaria/createcursos" class="nav-link">Criar Cursos</a>
-              </li>
               @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
