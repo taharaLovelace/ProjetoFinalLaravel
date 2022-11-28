@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,18 +27,13 @@ Route::get('/secretaria/createcursos', [CursoController::class, 'create'])->midd
 Route::post('/cursos', [CursoController::class, 'store']);
 Route::get('cursos/{id}', [CursoController::class, 'show']);
 
-Route::get('/requisicao', function () {
-    $json = \Illuminate\Support\Facades\Http::get('https://viacep.com.br/ws/01001000/json/')->body();
-    dd($json);
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //ROTAS DE ALUNOS
 Route::get('/alunos/dashboard', [AlunosController::class, 'index']);                    //dashboard principal alunos
 Route::resource('user',AlunosController::class);
+Route::get('/alunos/alunos', [AlunosController::class, 'view']);
 
 
 
@@ -59,7 +51,6 @@ Route::resource('professores',ProfessoresController::class);
 Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);          //dashboard principal professores
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('curso',CursoController::class);
 

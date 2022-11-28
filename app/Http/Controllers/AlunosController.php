@@ -105,7 +105,12 @@ class AlunosController extends Controller
             $user->update($request->all()); ///esse comando faz o update do aluno na databse
         
             ///orientando o usuário
-            return redirect('/secretaria/alunos')->with('Sucesso','Aluno adicionado com sucesso');
+            if(Auth::check() && Auth::user()->role == '1'){
+            return redirect('/secretaria/alunos')->with('Sucesso','Aluno alterado com sucesso');
+            }
+            if(Auth::check() && Auth::user()->role == '2'){
+                return redirect('/alunos/alunos')->with('Sucesso','Aluno alterado com sucesso');
+            }
     }
 
     /**

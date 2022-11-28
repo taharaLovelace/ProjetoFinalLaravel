@@ -17,7 +17,7 @@
                     {{ __('Bem vindo: ') }} {{ Auth::user()->name }}
                 </div>
                 
-                <a class="btn btn-primary" href="#">Editar seus dados</a>
+                <a class="btn btn-primary" href="/alunos/alunos">Editar seus dados</a>
                 <a class="btn btn-primary" href="/home/createprof" role="button">Se inscrever em Algum curso</a>
                 <a class="btn btn-primary" href="/home/createcursos" role="button">ZZZZZZZZZZZZZZZZZZZZZZ</a>
             </div>
