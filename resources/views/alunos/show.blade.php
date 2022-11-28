@@ -1,5 +1,7 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Mostrar Aluno')
+
 @section('content')
 
 <div class="row">
@@ -8,7 +10,7 @@
                 <h2> Mostrar Aluno</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/secretaria/alunos"> Back</a>
+                <a class="btn btn-primary" href="/secretaria/alunos"> Voltar</a>
             </div>
         </div>
     </div>

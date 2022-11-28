@@ -18,6 +18,8 @@ class AlunosController extends Controller
         $user = Auth::user()->role;
         if ($user == '2'){
             return view('alunos.dashboard');
+        }elseif($user == '3'){
+            return view('professores.dashboard');
         }else{
             return view('welcome');
         };
@@ -66,7 +68,12 @@ class AlunosController extends Controller
      */
     public function show(User $user)
     {
-        return view('alunos.show', compact ('user'));
+        if ($user == '2'){
+            return view('alunos.show', compact ('user'));
+        }else{
+            return view('professores.show', compact ('user'));
+        };
+        
     }
 
     /**
@@ -77,7 +84,12 @@ class AlunosController extends Controller
      */
     public function edit(User $user)
     {
-        return view('alunos.edit', compact('user'));
+        if ($user == '2'){
+            return view('alunos.edit', compact('user'));
+        }else{
+            return view('professores.edit', compact('user'));
+        };
+       
     }
 
     /**

@@ -47,11 +47,14 @@ Route::get('/register', [SecretariaController::class, 'registro'])->middleware('
 
 
 //ROTAS DE PROFESSORES
-Route::resource('professores',ProfessoresController::class);
+
+Route::resource('user',ProfessoresController::class);
+
 Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);          //dashboard principal professores
 
 Auth::routes();
 
 Route::resource('curso',CursoController::class);
 
-Route::post('/cursos/join/{id}', [CursoController::class, 'joinCurso'])->middleware('auth');;
+Route::post('/cursos/join/{id}', [CursoController::class, 'joinCurso'])->middleware('auth');
+Route::get('/professores/professores', [ProfessoresController::class, 'view']);

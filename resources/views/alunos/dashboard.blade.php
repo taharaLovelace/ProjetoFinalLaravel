@@ -1,5 +1,7 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Painel de Controle')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -18,8 +20,7 @@
                 </div>
                 
                 <a class="btn btn-primary" href="/alunos/alunos">Editar seus dados</a>
-                <a class="btn btn-primary" href="/home/createprof" role="button">Se inscrever em Algum curso</a>
-                <a class="btn btn-primary" href="/home/createcursos" role="button">ZZZZZZZZZZZZZZZZZZZZZZ</a>
+                <a class="btn btn-primary" href="/cursos" role="button">Se inscrever em Algum curso</a>
             </div>
         </div>
     </div>

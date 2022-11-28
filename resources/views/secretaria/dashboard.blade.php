@@ -1,5 +1,7 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Painel de Controle')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

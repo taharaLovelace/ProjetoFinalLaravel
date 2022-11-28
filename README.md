@@ -52,15 +52,12 @@ Inserir dados na database
 php artisan migrate --seed
 ```
 
-//ROTAS DE PROFESSORES
-[DashBoardProfessores](http://localhost:8080/professores/dashboard)
+//ROTAS
+[Site](http://localhost:8080/)
+[PHPMYADMIN](http://localhost:8081/)
 
-//ROTAS DA SECRETARIA
-[DashBoardSecretaria](http://localhost:8080/secretaria/dashboard)
-[DashBoardSecretariaAlunosDisponiveis](http://localhost:8080/secretaria/alunos)
-[DashBoardSecretariaProfessoresDisponiveis](http://localhost:8080/secretaria/professores)
-[DashBoardSecretariaCursosDisponiveis](http://localhost:8080/secretaria/cursos)
-[RegisterDeUsuarios](http://localhost:8080/register)
+
+
    
 
 

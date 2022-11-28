@@ -1,5 +1,7 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Editar Aluno')
+
 @section('content')
 
 <div class="row">

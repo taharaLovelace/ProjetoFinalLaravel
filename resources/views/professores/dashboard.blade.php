@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Painel de Controle')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,9 +19,8 @@
                     {{ __('Bem vindo: ') }} {{ Auth::user()->name }}
                 </div>
                 
-                <a class="btn btn-primary" href="/home/createalunos" role="button">Editar Seus Dados</a>
-                <a class="btn btn-primary" href="/home/createprof" role="button">Se inscrever em Algum curso</a>
-                <a class="btn btn-primary" href="/home/createcursos" role="button">ZZZZZZZZZZZZZZZZZZZZZZ</a>
+                <a class="btn btn-primary" href="/professores/professores" role="button">Editar Seus Dados</a>
+                <a class="btn btn-primary" href="/cursos" role="button">Ministrar Cursos</a>
             </div>
         </div>
     </div>

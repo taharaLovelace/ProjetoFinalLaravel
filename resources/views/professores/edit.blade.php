@@ -1,14 +1,16 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Editar Professor')
+
 @section('content')
 
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar aluno</h2>
+                <h2>Editar Professor</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/secretaria/alunos"> Voltar</a>
+                <a class="btn btn-primary" href="/secretaria/professores"> Voltar</a>
             </div>
         </div>
     </div>

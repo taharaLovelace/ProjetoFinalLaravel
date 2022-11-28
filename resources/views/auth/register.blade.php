@@ -1,5 +1,7 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Register')
+
 @section('content')
 @if(Auth::check() && Auth::user()->role == 1)
 <div class="container">
