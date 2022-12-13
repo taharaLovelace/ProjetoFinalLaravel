@@ -48,7 +48,7 @@ Route::get('/register', [SecretariaController::class, 'registro'])->middleware('
 
 //ROTAS DE PROFESSORES
 
-Route::resource('user',ProfessoresController::class);
+Route::resource('professores',ProfessoresController::class);
 
 Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);          //dashboard principal professores
 

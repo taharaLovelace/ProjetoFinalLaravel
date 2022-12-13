@@ -68,12 +68,10 @@ class AlunosController extends Controller
      */
     public function show(User $user)
     {
-        if ($user == '2'){
-            return view('alunos.show', compact ('user'));
-        }else{
-            return view('professores.show', compact ('user'));
-        };
-        
+  
+            return view('secretaria.show', compact ('user'));
+
+ 
     }
 
     /**
@@ -84,11 +82,8 @@ class AlunosController extends Controller
      */
     public function edit(User $user)
     {
-        if ($user == '2'){
-            return view('alunos.edit', compact('user'));
-        }else{
-            return view('professores.edit', compact('user'));
-        };
+        
+            return view('secretaria.edit', compact('user'));
        
     }
 
@@ -117,9 +112,12 @@ class AlunosController extends Controller
             $user->update($request->all()); ///esse comando faz o update do aluno na databse
         
             ///orientando o usuário
-            if(Auth::check() && Auth::user()->role == '1'){
+            if(Auth::user()->role == '1' && $user->role == '2'){
             return redirect('/secretaria/alunos')->with('Sucesso','Aluno alterado com sucesso');
             }
+            if(Auth::user()->role == '1' && $user->role == '3'){
+                return redirect('/secretaria/professores')->with('Sucesso','Professores alterado com sucesso');
+                }
             if(Auth::check() && Auth::user()->role == '2'){
                 return redirect('/alunos/alunos')->with('Sucesso','Aluno alterado com sucesso');
             }
@@ -133,7 +131,14 @@ class AlunosController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        if(Auth::user()->role == '1' && $user->role == '2'){
+            return redirect('/secretaria/alunos');
+            }
+        if(Auth::user()->role == '1' && $user->role == '3'){
+            return redirect('/secretaria/professores');
+            }
     }
 
     public function view () {
