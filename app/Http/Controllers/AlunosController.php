@@ -121,6 +121,9 @@ class AlunosController extends Controller
             if(Auth::check() && Auth::user()->role == '2'){
                 return redirect('/alunos/alunos')->with('Sucesso','Aluno alterado com sucesso');
             }
+            if(Auth::check() && Auth::user()->role == '3'){
+                return redirect('/professores/professores')->with('Sucesso','Professor alterado com sucesso');
+            }
     }
 
     /**

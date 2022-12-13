@@ -5,28 +5,44 @@
 @section('content')
 @if(Auth::check() && Auth::user()->role == 1)
 <div class="container">
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registrar') }}</div>
+                @if(Request::is('registeraluno'))
+                <div class="card-header">{{ __('Registrar Aluno') }}</div>
+                @endif
+
+                @if(Request::is('registerprofessor'))
+                <div class="card-header">{{ __('Registrar Professor') }}</div>
+                @endif
+
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/register">
                         @csrf
-
-                        <div class="row mb-3">
-                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Permissão (1 = secretaria, 2 = aluno)') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                        
+                        @if(Request::is('registeraluno'))
+                        <input id="role" style="display:none;" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="2" required autocomplete="role" >
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
+                        
+                        @endif
+
+                        @if(Request::is('registerprofessor'))
+                        <input id="role" style="display:none;" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="3" required autocomplete="role" >
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        
+                        @endif
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
@@ -126,6 +142,7 @@
                             </div>
                         </div>
 
+                        @if(Request::is('registeraluno'))
                         <div class="row mb-3">
                             <label for="filme" class="col-md-4 col-form-label text-md-end">{{ __('Filme') }}</label>
 
@@ -139,6 +156,19 @@
                                 @enderror
                             </div>
                         </div>
+                        @endif
+
+                        @if(Request::is('registerprofessor'))
+                        <input id="filme" style="display:none;" type="text" class="form-control @error('filme') is-invalid @enderror" name="filme" value="N/A" required autocomplete="filme" >
+
+                                @error('filme')
+                                    <span class="invalid-feedback" filme="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        
+                        @endif
+                        
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Senha') }}</label>
@@ -175,11 +205,12 @@
         </div>
     </div>
 </div>
-@else
-<h1>Você não tem permissão!</h1>
-<a href="/" class="btn btn-primary">Retornar</a>
-@endif
+                        @else
+                        <h1>Você não tem permissão!</h1>
+                        <a href="/" class="btn btn-primary">Retornar</a>
+                        @endif
 @endsection
+
 <script>
     
     function limpa_formulário_cep() {

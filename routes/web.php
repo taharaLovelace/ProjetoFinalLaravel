@@ -26,6 +26,7 @@ Route::get('/cursos', [CursoController::class, 'index']);
 Route::get('/secretaria/createcursos', [CursoController::class, 'create'])->middleware('secretaria'); 
 Route::post('/cursos', [CursoController::class, 'store']);
 Route::get('cursos/{id}', [CursoController::class, 'show']);
+Route::post('/cursos/link/{id}', [CursoController::class, 'linkprofessor'])->middleware('auth');
 
 Auth::routes();
 
@@ -42,15 +43,16 @@ Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->mid
 Route::get('/secretaria/alunos', [AlunosController::class, 'view'])->middleware('secretaria');                    //lista alunos
 Route::get('/secretaria/professores', [ProfessoresController::class, 'view'])->middleware('secretaria');          //lista professores
 Route::get('/secretaria/cursos', [CursoController::class, 'view'])->middleware('secretaria');  
-Route::get('/register', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos e professores
+Route::get('/registeraluno', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos
+Route::get('/registerprofessor', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos professores
 
 
 
 //ROTAS DE PROFESSORES
 
-Route::resource('professores',ProfessoresController::class);
 
-Route::get('/professores/dashboard', [ProfessoresController::class, 'index']);          //dashboard principal professores
+
+Route::get('/professores/dashboard', [AlunosController::class, 'index']);          //dashboard principal professores
 
 Auth::routes();
 

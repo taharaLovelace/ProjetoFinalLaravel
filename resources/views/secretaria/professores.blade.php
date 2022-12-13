@@ -70,9 +70,6 @@
                     <a class="btn" style="background-color:green" href="{{ route('user.show',Auth::user()->id) }}">Mostrar</a>
                     <a class="btn btn-primary" href="{{ route('user.edit',Auth::user()->id) }}">Editar</a>
                     
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>

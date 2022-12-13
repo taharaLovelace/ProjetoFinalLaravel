@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text("descriptionsimple");
             $table->integer("minimum");
             $table->integer("maximum");
+            $table->integer("status")->nullable();
+            $table->foreignId("user_id")->nullable()->constrained()->ondelete('cascade');
         });
     }
 

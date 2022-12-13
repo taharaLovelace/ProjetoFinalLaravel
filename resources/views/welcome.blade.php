@@ -25,6 +25,7 @@
                     <p class="subtexto mt-4">Conheca já nossos cursos!</p>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col">
                     <div class="card" style="width: 18rem;">

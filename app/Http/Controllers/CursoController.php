@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Curso;
+use App\Models\User;
+use Auth;
 
 class CursoController extends Controller
 {
@@ -49,8 +51,9 @@ class CursoController extends Controller
     public function show($id){
 
         $curso = Curso::findOrFail($id);
+        $professores = User::all();
 
-        return view('cursos.show', ['curso' => $curso]);
+        return view('cursos.show', ['curso' => $curso, 'professores' => $professores]);
 
     }
 
@@ -91,7 +94,10 @@ class CursoController extends Controller
     }
 
     public function joinCurso($id) {
-        $user = auth()->user();
+        $user = Auth::user()->role;
+        if ($user !=  '2'){
+            return redirect('/');
+        }
 
         $user->cursos()->attach($id);
 
@@ -99,5 +105,18 @@ class CursoController extends Controller
 
         return redirect('/cursos')->with('msg', 'Voce se inscreveu no curso ' . $curso->name);
     }
-}
 
+    public function linkprofessor(Request $request){
+        $user = Auth::user()->role;
+        if ($user !=  '1'){
+            return redirect('/');
+        }
+
+        $professor = User::findOrFail('request->id');
+        $curso = Curso::findOrFail('request->id');
+        $curso->user_id = $professor->id;
+        $curso->save();
+
+        return redirect('/cursos');
+    }
+}

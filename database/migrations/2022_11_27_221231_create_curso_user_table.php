@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('curso_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
+            $table->float('nota')->nullable();
         });
     }
 
