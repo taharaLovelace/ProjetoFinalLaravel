@@ -20,36 +20,34 @@ class UserSeeder extends Seeder
             'role' => '1',
             'name' => 'Secretaria',
             'email' => 'secretaria@secretaria.com',
-            'endereco' => '13086130',
+            'endereco' => '13087571',
             'CPF' => 'N/A',
-            'filme' => 'N/A',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '3',
-            'name' => 'Professor 1',
-            'email' => 'professor1@professor.com',
-            'endereco' => '13086130',
+            'name' => 'Ricardo Pannin',
+            'email' => 'pannain@professor.com',
+            'endereco' => '13087571',
             'CPF' => '111111',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '3',
-            'name' => 'Professor 2',
-            'email' => 'professor2@professor.com',
-            'endereco' => '13086130',
+            'name' => 'Leandro Xastre',
+            'email' => 'xastre@professor.com',
+            'endereco' => '13087571',
             'CPF' => '222222',
-            'filme' => 'N/A',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '3',
-            'name' => 'Professor 3',
-            'email' => 'professor3@professor.com',
-            'endereco' => '13086130',
+            'name' => 'Valdomiro',
+            'email' => 'valdomiro@professor.com',
+            'endereco' => '13087571',
             'CPF' => '333333',
             'filme' => 'N/A',
             'password' => Hash::make('123456789'),
@@ -57,41 +55,51 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'role' => '2',
-            'name' => 'Aluno 1',
-            'email' => 'aluno1@aluno.com',
-            'endereco' => '13086130',
-            'CPF' => '211111',
-            'filme' => 'Smurfs',
+            'name' => 'Alexandre',
+            'email' => 'alexandre@aluno.com',
+            'endereco' => '13087571',
+            'CPF' => '444444',
+            'filme' => 'Até o Ultimo Homem',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '2',
-            'name' => 'Aluno 2',
-            'email' => 'aluno2@aluno.com',
-            'endereco' => '13086130',
-            'CPF' => '211112',
-            'filme' => 'Blade Runner',
+            'name' => 'Augusto',
+            'email' => 'augusto@aluno.com',
+            'endereco' => '13087571',
+            'CPF' => '555555',
+            'filme' => 'The Batman',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '2',
-            'name' => 'Aluno 3',
-            'email' => 'aluno3@aluno.com',
-            'endereco' => '13086130',
-            'CPF' => '211113',
-            'filme' => 'Shrek',
+            'name' => 'Hugo',
+            'email' => 'hugo@aluno.com',
+            'endereco' => '13087571',
+            'CPF' => '666666',
+            'filme' => 'Pets',
             'password' => Hash::make('123456789'),
         ]);
 
         DB::table('users')->insert([
             'role' => '2',
-            'name' => 'Aluno 4',
-            'email' => 'aluno4@aluno.com',
-            'endereco' => '13086130',
-            'CPF' => '211114',
+            'name' => 'João',
+            'email' => 'joao@aluno.com',
+            'endereco' => '13087571',
+            'CPF' => '777777',
             'filme' => 'One Piece',
+            'password' => Hash::make('123456789'),
+        ]);
+
+	    DB::table('users')->insert([
+            'role' => '2',
+            'name' => 'Mattheus',
+            'email' => 'mattheus@aluno.com',
+            'endereco' => '13087571',
+            'CPF' => '888888',
+            'filme' => 'Barbie',
             'password' => Hash::make('123456789'),
         ]);
     }
