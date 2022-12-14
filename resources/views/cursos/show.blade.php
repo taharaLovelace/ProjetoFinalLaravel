@@ -47,8 +47,7 @@
                 <h1>{{ $curso->name }}</h1>
                 <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{ count($curso->users) }} Participantes</p>
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: </p>
-                <form action="/cursos/link/{{ $curso->id }}" method="POST">
-                @csrf
+                
                 <li class="nav-item dropdown d-flex justify-content-center my-2">
     <button id="navbarDropdown" class="nav-link dropdown-toggle show" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <span id="proftexto">Selecione um professor</span>
@@ -63,8 +62,11 @@
         @endif
         @endforeach
     </li>
-    <input id="profid" style="display:none;" type="text" class="form-control @error('profid') is-invalid @enderror" name="profid" value="" required autocomplete="alunoid" >
-                <a href="/cursos/link/{{ $curso->id }}" class="btn btn-primary" id="curso-submit" onclick="event.preventDefault(); this.closest('form').submit();">Relacionar Um Professor</a>
+    <form action="/cursos/link/">
+    <input  style="display:none;" id="profid" type="text" class="form-control @error('profid') is-invalid @enderror" name="profid" value="" required autocomplete="profid" autofocus>
+    <div class="d-flex justify-content-center">
+    <button class ="btn btn-primary">Relacionar Professor</button>
+    </div>
                 </form>
             </div>
         </div>

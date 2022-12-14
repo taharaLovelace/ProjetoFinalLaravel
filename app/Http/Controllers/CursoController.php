@@ -106,17 +106,30 @@ class CursoController extends Controller
         return redirect('/cursos')->with('msg', 'Voce se inscreveu no curso ' . $curso->name);
     }
 
+    
+    public function relacao(){
+        $user = Auth::user()->role;
+        if ($user !=  '1'){
+            return redirect('/');
+        }
+
+        $users = User::all();
+        $cursos = Curso::all();
+    
+        return view('secretaria.relacao',[ 'cursos' => $cursos, 'users' => $users]);
+    }
+
     public function linkprofessor(Request $request){
         $user = Auth::user()->role;
         if ($user !=  '1'){
             return redirect('/');
         }
 
-        $professor = User::findOrFail('request->id');
-        $curso = Curso::findOrFail('request->id');
-        $curso->user_id = $professor->id;
+        $curso = curso::findOrFail($request->cursoid);
+        $user = user::findOrFail($request->profid);
+        $curso->user_id = $user->id;
         $curso->save();
-
-        return redirect('/cursos');
+        
+        return back();
     }
 }

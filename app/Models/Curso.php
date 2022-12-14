@@ -15,6 +15,8 @@ class Curso extends Model
         'descriptionsimple',
         'minimum',
         'maximum',
+        'status',
+        'user_id',
     ];
 
     public function users(){

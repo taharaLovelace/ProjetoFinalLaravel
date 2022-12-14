@@ -26,7 +26,7 @@ Route::get('/cursos', [CursoController::class, 'index']);
 Route::get('/secretaria/createcursos', [CursoController::class, 'create'])->middleware('secretaria'); 
 Route::post('/cursos', [CursoController::class, 'store']);
 Route::get('cursos/{id}', [CursoController::class, 'show']);
-Route::post('/cursos/link/{id}', [CursoController::class, 'linkprofessor'])->middleware('auth');
+
 
 Auth::routes();
 
@@ -59,4 +59,6 @@ Auth::routes();
 Route::resource('curso',CursoController::class);
 
 Route::post('/cursos/join/{id}', [CursoController::class, 'joinCurso'])->middleware('auth');
+Route::get('/link/professor', [CursoController::class, 'relacao'])->middleware('auth');
+Route::get('/link/professor/relacao', [CursoController::class, 'linkprofessor'])->middleware('auth');
 Route::get('/professores/professores', [ProfessoresController::class, 'view']);
