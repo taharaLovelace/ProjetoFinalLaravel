@@ -5,12 +5,22 @@
 @section('content')
   <div class="row">
         <div class="col-lg-12">
+        @if(Auth::user()->role == 1)
+            <br>
             <div class="pull-left">
                 <h2>Lista de Todos os Alunos</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('register') }}"> Criar Novo Aluno</a>
+                <a class="btn btn-success" href="/registeraluno"> Criar Novo Aluno</a>
             </div>
+            <br>
+        @endif
+        @if(Auth::user()->role == 2)
+            <br>
+            <div class="pull-left">
+                <h2>Seus Dados</h2>
+            </div>
+        @endif
         </div>
     </div>
 
@@ -78,5 +88,15 @@
 
     </table>
     {{ $users->links() }}
+            @if(Auth::user()->role == 1)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/secretaria/dashboard"> Voltar</a>
+            </div>
+            @endif
+            @if(Auth::user()->role == 2)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/alunos/dashboard"> Voltar</a>
+            </div>
+            @endif
 
 @endsection

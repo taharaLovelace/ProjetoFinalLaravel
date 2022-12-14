@@ -10,9 +10,21 @@
             <div class="pull-left">
                 <h2> Mostrar Aluno</h2>
             </div>
+            @if(Auth::user()->role == 1)
             <div class="pull-right">
                 <a class="btn btn-primary" href="/secretaria/alunos"> Voltar</a>
             </div>
+            @endif
+            @if(Auth::user()->role == 2)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/alunos/alunos"> Voltar</a>
+            </div>
+            @endif
+            @if(Auth::user()->role == 3)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/professores/professores"> Voltar</a>
+            </div>
+            @endif
         </div>
     </div>
 
@@ -107,6 +119,7 @@
             </div>
         </div>
     </div>
+
 
 @endif
 

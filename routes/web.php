@@ -21,22 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//ROTAS DE CURSOS
 Route::get('/cursos', [CursoController::class, 'index']);
-
 Route::get('/secretaria/createcursos', [CursoController::class, 'create'])->middleware('secretaria'); 
 Route::post('/cursos', [CursoController::class, 'store']);
 Route::get('cursos/{id}', [CursoController::class, 'show']);
-
-
 Auth::routes();
-
 
 //ROTAS DE ALUNOS
 Route::get('/alunos/dashboard', [AlunosController::class, 'index']);                    //dashboard principal alunos
 Route::resource('user',AlunosController::class);
 Route::get('/alunos/alunos', [AlunosController::class, 'view']);
-
-
 
 //ROTAS DE SECRETARIA
 Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria
@@ -46,18 +41,10 @@ Route::get('/secretaria/cursos', [CursoController::class, 'view'])->middleware('
 Route::get('/registeraluno', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos alunos
 Route::get('/registerprofessor', [SecretariaController::class, 'registro'])->middleware('secretaria');                    //registro dos professores
 
-
-
 //ROTAS DE PROFESSORES
-
-
-
 Route::get('/professores/dashboard', [AlunosController::class, 'index']);          //dashboard principal professores
-
 Auth::routes();
-
 Route::resource('curso',CursoController::class);
-
 Route::post('/cursos/join/{id}', [CursoController::class, 'joinCurso'])->middleware('auth');
 Route::get('/link/professor', [CursoController::class, 'relacao'])->middleware('auth');
 Route::get('/link/professor/relacao', [CursoController::class, 'linkprofessor'])->middleware('auth');

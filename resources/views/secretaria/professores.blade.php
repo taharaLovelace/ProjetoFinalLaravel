@@ -5,12 +5,22 @@
 @section('content')
   <div class="row">
         <div class="col-lg-12">
+        @if(Auth::user()->role == 1)
+            <br>
             <div class="pull-left">
                 <h2>Lista de Todos os Professores</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('register') }}"> Criar Novo Professor</a>
+                <a class="btn btn-success" href="/registerprofessor"> Criar Novo Professor</a>
             </div>
+            <br>
+        @endif
+        @if(Auth::user()->role == 3)
+            <br>
+            <div class="pull-left">
+                <h2>Seus Dados</h2>
+            </div>
+        @endif
         </div>
     </div>
 
@@ -27,7 +37,6 @@
             <th>Email</th>
             <th>Endereco</th>
             <th>CPF</th>
-            <th>Filme</th>
             <th width="280px">Action</th>
         </tr>
         @if(Auth::user()->role == 1)
@@ -39,7 +48,6 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->endereco }}</td>
             <td>{{ $user->cpf }}</td>
-            <td>{{ $user->filme }}</td>
             <td>
                 
             <form action="{{ route('user.destroy',$user->id) }}" method="POST">
@@ -63,7 +71,6 @@
             <td>{{ Auth::user()->email }}</td>
             <td>{{ Auth::user()->endereco }}</td>
             <td>{{ Auth::user()->cpf }}</td>
-            <td>{{ Auth::user()->filme }}</td>
             <td>
                 
             <form action="{{ route('user.destroy',Auth::user()->id) }}" method="POST">
@@ -78,5 +85,15 @@
 
     </table>
     {{ $users->links() }}
+            @if(Auth::user()->role == 1)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/secretaria/dashboard"> Voltar</a>
+            </div>
+            @endif
+            @if(Auth::user()->role == 3)
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/professores/dashboard"> Voltar</a>
+            </div>
+            @endif
 
 @endsection

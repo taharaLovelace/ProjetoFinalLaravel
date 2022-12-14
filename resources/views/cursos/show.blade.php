@@ -3,10 +3,7 @@
 @section('title', $curso -> name)
 
 @section('content')
-@if(Auth::check() && Auth::user()->role == 2)
-    
-
-<div class="col-md-10 offset-md-1">
+    <div class="col-md-10 offset-md-1">
         <div class="row">
             <div id="image-container" class="col-md-6">
             @if($curso -> name == 'Python')
@@ -26,10 +23,24 @@
                 <h1>{{ $curso->name }}</h1>
                 <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{ count($curso->users) }} Participantes</p>
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: </p>
+                @if(Auth::check() && Auth::user()->role == 2)
                 <form action="/cursos/join/{{ $curso->id }}" method="POST">
                 @csrf
                 <a href="/cursos/join/{{ $curso->id }}" class="btn btn-primary" id="curso-submit" onclick="event.preventDefault(); this.closest('form').submit();">Participar do Curso</a>
                 </form>
+                @endif
+                @if(Auth::check() && Auth::user()->role == 1)
+                    <br>
+                    <div class="pull-right">
+                        <a class="btn btn-primary" href="/link/professor"> Atribuir Professor </a>
+                    </div>
+                    <script>
+                    function professores(profid,profnome){
+                    document.getElementById("proftexto").innerHTML = profnome;
+                    document.getElementById("profid").value = profid;
+                    }
+                    </script>
+                @endif
             </div>
              <div class="col-md-12" id="description-container">
                 <h3>Sobre o curso</h3>
@@ -38,48 +49,6 @@
          
         </div>
     </div>
-    @endif
-
-    @if(Auth::check() && Auth::user()->role == 1)
-    <div class="col-md-10 offset-md-1">
-        <div class="row">
-        <div id="info-container" class="col-md-6">
-                <h1>{{ $curso->name }}</h1>
-                <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{ count($curso->users) }} Participantes</p>
-                <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: </p>
-                
-                <li class="nav-item dropdown d-flex justify-content-center my-2">
-    <button id="navbarDropdown" class="nav-link dropdown-toggle show" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span id="proftexto">Selecione um professor</span>
-    </button>
-
-    <div class="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(866px, 46px);" data-popper-placement="bottom-end">
-        @foreach ($professores as $professor)
-        @if ($professor->role == 3) 
-        <button class="dropdown-item" onclick="professores( '{{ $professor->id }}', '{{ $professor->name }}' )">
-           {{ $professor->name }}
-        </button>
-        @endif
-        @endforeach
-    </li>
-    <form action="/cursos/link/">
-    <input  style="display:none;" id="profid" type="text" class="form-control @error('profid') is-invalid @enderror" name="profid" value="" required autocomplete="profid" autofocus>
-    <div class="d-flex justify-content-center">
-    <button class ="btn btn-primary">Relacionar Professor</button>
-    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function professores(profid,profnome){
-        document.getElementById("proftexto").innerHTML = profnome;
-        document.getElementById("profid").value = profid;
-    }
-    </script>
-    
-    @endif
 
 
 @endsection

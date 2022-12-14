@@ -137,11 +137,6 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Filmes:</strong>
-                    <textarea class="form-control" style="height:150px" name="filme" placeholder="Filmes">{{ $user->filme }}</textarea>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>Email:</strong>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control" placeholder="Email">
                 </div>

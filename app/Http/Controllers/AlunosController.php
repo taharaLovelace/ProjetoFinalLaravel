@@ -102,7 +102,7 @@ class AlunosController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'endereco' => ['required', 'string', 'max:255'],
             'cpf' => ['required', 'string', 'max:255'],
-            'filme' => ['required', 'string', 'max:255'],
+            'filme' => ['string', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
         
                 

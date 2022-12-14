@@ -32,7 +32,6 @@ class UserSeeder extends Seeder
             'email' => 'professor1@professor.com',
             'endereco' => '13086130',
             'CPF' => '111111',
-            'filme' => 'N/A',
             'password' => Hash::make('123456789'),
         ]);
 
