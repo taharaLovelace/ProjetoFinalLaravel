@@ -98,7 +98,7 @@ class CursoController extends Controller
         if ($user !=  '2'){
             return redirect('/');
         }
-
+        $user = auth()->user();
         $user->cursos()->attach($id);
 
         $curso = Curso::findOrFail($id);
