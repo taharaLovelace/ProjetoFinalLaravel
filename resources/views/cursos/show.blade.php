@@ -21,25 +21,34 @@
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $curso->name }}</h1>
+                <p class="card-text"><ion-icon name="people-outline"></ion-icon>Mínimo de Alunos: {{ $curso->minimum }}</p>
+                <p class="card-text"><ion-icon name="people-outline"></ion-icon>Máximos de Alunos: {{ $curso->maximum }}</p>
+                <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Status: 
+                @if(count($curso->users) < $curso->minimum) Mínimo de alunos não atingido!</p> @endif
+                @if(count($curso->users) >= $curso->minimum && count($curso->users) !=  $curso->maximum) Matrículas Abertas - Curso acontecerá!</p> @endif
+                @if(count($curso->users) ==  $curso->maximum) Matrículas Encerradas</p> @endif
                 <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{ count($curso->users) }} Participantes</p>
-                <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: </p>
+                <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Professor do Curso: @if($professor != NULL) {{$professor['name']}} </p> @endif
+                
                 @if(Auth::check() && Auth::user()->role == 2)
+                @if (!$usuarioentrou && count($curso->users) !=  $curso->maximum)
                 <form action="/cursos/join/{{ $curso->id }}" method="POST">
                 @csrf
                 <a href="/cursos/join/{{ $curso->id }}" class="btn btn-primary" id="curso-submit" onclick="event.preventDefault(); this.closest('form').submit();">Participar do Curso</a>
                 </form>
                 @endif
+                @if($usuarioentrou)
+                <br>
+                <br>
+                <p><a href="" class="btn btn-primary">Você já está no curso</a></p>
+                @endif
+                @endif
+                
                 @if(Auth::check() && Auth::user()->role == 1)
                     <br>
                     <div class="pull-right">
                         <a class="btn btn-primary" href="/link/professor"> Atribuir Professor </a>
                     </div>
-                    <script>
-                    function professores(profid,profnome){
-                    document.getElementById("proftexto").innerHTML = profnome;
-                    document.getElementById("profid").value = profid;
-                    }
-                    </script>
                 @endif
             </div>
              <div class="col-md-12" id="description-container">

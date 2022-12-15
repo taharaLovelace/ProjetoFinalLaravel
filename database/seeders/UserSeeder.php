@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'role' => '3',
-            'name' => 'Ricardo Pannin',
+            'name' => 'Ricardo Pannain',
             'email' => 'pannain@professor.com',
             'endereco' => '13087571',
             'CPF' => '111111',
@@ -49,7 +49,6 @@ class UserSeeder extends Seeder
             'email' => 'valdomiro@professor.com',
             'endereco' => '13087571',
             'CPF' => '333333',
-            'filme' => 'N/A',
             'password' => Hash::make('123456789'),
         ]);
 

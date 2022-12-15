@@ -51,9 +51,20 @@ class CursoController extends Controller
     public function show($id){
 
         $curso = Curso::findOrFail($id);
-        $professores = User::all();
+        $professor = User::find($curso->user_id);
+        $user = Auth::user();
+        $usuarioentrou = false;
 
-        return view('cursos.show', ['curso' => $curso, 'professores' => $professores]);
+        if($user){
+            $cursosusuario = $user->cursos->toArray();
+            foreach ($cursosusuario as $cursousuario){
+                if($cursousuario['id'] == $id){
+                    $usuarioentrou = true;
+                } 
+            }
+        }
+
+        return view('cursos.show', ['curso' => $curso,'usuarioentrou' => $usuarioentrou, 'professor' => $professor]);
 
     }
 
