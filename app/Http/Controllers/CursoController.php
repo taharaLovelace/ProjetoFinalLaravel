@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Models\User;
 use Auth;
+use App\Models\CursoUser;
 
 class CursoController extends Controller
 {
@@ -70,8 +71,10 @@ class CursoController extends Controller
 
     public function view () {
         $cursos = Curso::latest()->paginate(15);
+        
+        $notinha = curso_user()->nota;
 
-        return view('secretaria.cursos', compact('cursos'))->with(request()->input('page'));
+        return view('secretaria.cursos', ['notinha' => $notinha], compact('cursos'))->with(request()->input('page'));
     }
 
     public function destroy(Curso $curso)

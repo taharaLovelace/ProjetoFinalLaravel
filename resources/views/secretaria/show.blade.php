@@ -1,6 +1,6 @@
 @extends('layouts.barrainicial')
 
-@section('title', 'Mostrar Aluno')
+@section('title', 'Mostrar')
 
 @section('content')
 
@@ -104,12 +104,6 @@
             <div class="form-group">
                 <strong>Endereco:</strong>
                 {{ $user->endereco }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Filme:</strong>
-                {{ $user->filme }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

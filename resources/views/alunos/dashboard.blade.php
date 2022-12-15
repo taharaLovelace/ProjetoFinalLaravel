@@ -22,6 +22,7 @@
                 
                 <a class="btn btn-primary" href="/alunos/alunos">Editar seus dados</a>
                 <a class="btn btn-primary" href="/cursos" role="button">Se inscrever em Algum curso</a>
+                <a class="btn btn-primary" href="/alunos/cursos" role="button">Seus Cursos</a>
             </div>
         </div>
     </div>

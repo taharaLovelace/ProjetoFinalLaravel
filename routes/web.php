@@ -32,6 +32,8 @@ Auth::routes();
 Route::get('/alunos/dashboard', [AlunosController::class, 'index']);                    //dashboard principal alunos
 Route::resource('user',AlunosController::class);
 Route::get('/alunos/alunos', [AlunosController::class, 'view']);
+Route::get('/alunos/cursos', [CursoController::class, 'view']);
+
 
 //ROTAS DE SECRETARIA
 Route::get('/secretaria/dashboard', [SecretariaController::class, 'index'])->middleware('secretaria');            //dashboard principal secretaria

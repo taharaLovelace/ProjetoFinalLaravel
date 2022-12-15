@@ -11,6 +11,7 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="/secretaria/createcursos"> Criar Novo Curso</a>
             </div>
+            <br>
         </div>
     </div>
 
@@ -19,7 +20,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
+        @if (Auth::user()->role == 1)
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
@@ -30,6 +31,7 @@
             <th>Max</th>
             <th width="280px">Action</th>
         </tr>
+        
         @foreach ($cursos as $curso)
         <tr>
             <td>{{ $curso->id }}</td>
@@ -52,6 +54,37 @@
             </td>
         </tr>
         @endforeach
+        @endif
+
+        @if (Auth::user()->role == 2)
+    <table class="table table-bordered">
+        <tr>
+            <th>Nome</th>
+            <th>Nota</th>
+
+            <th width="280px">Action</th>
+        </tr>
+        
+        @foreach ($cursos as $curso)
+        <tr>
+            <td>{{ $curso->name }}</td>
+            <td>{{ $notinha }}</td>
+
+
+            <td>
+                
+            <form action="{{ route('curso.destroy',$curso->id) }}" method="POST">
+                    <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Mostrar</a>
+                    <a class="btn btn-primary" href="{{ route('curso.edit',$curso->id) }}">Editar</a>
+                    
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+        @endif
 
     </table>
     {{ $cursos->links() }}
