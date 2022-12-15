@@ -21,7 +21,7 @@
                 </div>
                 
                 <a class="btn btn-primary" href="/professores/professores" role="button">Editar Seus Dados</a>
-                <a class="btn btn-primary" href="/professores/cursos" role="button">Ministrar Cursos</a>
+                <a class="btn btn-primary" href="/professores/cursos" role="button">Cursos Ministrados</a>
             </div>
         </div>
     </div>

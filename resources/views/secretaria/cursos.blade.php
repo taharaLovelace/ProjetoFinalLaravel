@@ -3,7 +3,7 @@
 @section('title', 'Lista de Cursos')
 
 @section('content')
-@if (Auth::user()->role == 1)
+    @if (Auth::user()->role == 1)
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
@@ -103,9 +103,7 @@
 
 
             <td>
-                
-            
-                    <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Mostrar</a>
+                <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Mostrar</a>
             </td>
         </tr>
         @endforeach
@@ -127,7 +125,7 @@
            <td>{{ $curso->name }}</td>
            
            <td>
-                <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Ver Notas</a>
+                <a class="btn" style="background-color:green" href="{{ route('curso.show',$curso->id) }}">Atribuir Notas</a>
            </td>
        </tr>
        @endforeach
