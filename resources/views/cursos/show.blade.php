@@ -18,6 +18,9 @@
             @if($curso -> name == 'C#')
             <img src="/img/csharp.jpg" alt="{{ $curso->name }}">
             @endif
+            @if($curso -> name != 'Python' && $curso -> name != 'Laravel' && $curso -> name != 'Java' && $curso -> name != 'C#')
+            <img src="/img/imagemcursogenerica.jpg" alt="{{ $curso->name }}">
+            @endif
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $curso->name }}</h1>

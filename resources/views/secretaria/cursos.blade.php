@@ -28,12 +28,24 @@
     </div>
     @endif
 
+    @if (Auth::user()->role == 3)
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-left">
+                <h2>Lista dos Cursos Ministrados</h2>
+            </div>
+            <br>
+        </div>
+    </div>
+    @endif
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
-        @if (Auth::user()->role == 1)
+
+    @if (Auth::user()->role == 1)
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
@@ -67,9 +79,9 @@
             </td>
         </tr>
         @endforeach
-        @endif
+    @endif
 
-        @if (Auth::user()->role == 2)
+    @if (Auth::user()->role == 2)
        
         <table class="table table-bordered">
         <tr>

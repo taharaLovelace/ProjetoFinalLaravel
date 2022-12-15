@@ -53,7 +53,7 @@ php artisan migrate --seed
 ```
 
 //ROTAS
-[Site](http://localhost:8080/)
+[Site](http://localhost:8080/)<br>
 [PHPMYADMIN](http://localhost:8081/)
 
 

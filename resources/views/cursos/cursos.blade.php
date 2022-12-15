@@ -35,6 +35,9 @@
             @if($curso -> name == 'C#')
             <img src="/img/csharp.jpg" alt="{{ $curso->name }}">
             @endif
+            @if($curso -> name != 'Python' && $curso -> name != 'Laravel' && $curso -> name != 'Java' && $curso -> name != 'C#')
+            <img src="/img/imagemcursogenerica.jpg" alt="{{ $curso->name }}">
+            @endif
             <div class="card-body">
                 <p class="card-date">27/11/2022</p>
                 <h5 class="card-title">{{ $curso->name }}</h5>
