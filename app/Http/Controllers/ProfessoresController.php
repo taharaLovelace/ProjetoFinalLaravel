@@ -108,5 +108,8 @@ class ProfessoresController extends Controller
         return view('secretaria.professores', compact('users'))->with(request()->input('page'));
     }
 
-   
+    public function notas () {
+        
+    }
+    
 }

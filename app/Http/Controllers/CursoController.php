@@ -71,10 +71,12 @@ class CursoController extends Controller
 
     public function view () {
         $cursos = Curso::latest()->paginate(15);
-        
-        $notinha = curso_user()->nota;
+        $user = Auth::user();
+        $notinha = CursoUser::where('user_id','=',$user->id)->get();
+        $cursos2 = $user->cursos;
+        $cursos3 = Curso::where('user_id','=',$user->id)->get();
 
-        return view('secretaria.cursos', ['notinha' => $notinha], compact('cursos'))->with(request()->input('page'));
+        return view('secretaria.cursos', ['notinha' => $notinha, 'cursos2' => $cursos2, 'cursos3' => $cursos3], compact('cursos'))->with(request()->input('page'));
     }
 
     public function destroy(Curso $curso)
