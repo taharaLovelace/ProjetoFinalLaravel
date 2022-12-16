@@ -109,7 +109,23 @@ class ProfessoresController extends Controller
     }
 
     public function notas () {
-        
+        $users = User::all();
+        $cursos = Curso::all();
+        $cursouser = CursoUser::all();
+
+        return view('professores.notas',[ 'cursos' => $cursos, 'users' => $users, 'cursouser' => $cursouser]);
+    }
+
+    public function atribuinota(Request $request){
+        $user = user::findOrFail($request->alunoid);
+        $curso = curso::findOrFail($request->cursoid);
+        $nota = CursoUser::findOrFail($request->alunoid);
+        $nota->nota = $request->nota;
+
+
+        $curso = CursoUser::where('user_id','=',$user)->where('curso_id', '=',$curso)->update(['nota'=> $nota]);
+
+        return back();
     }
     
 }

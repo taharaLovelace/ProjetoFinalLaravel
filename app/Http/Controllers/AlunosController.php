@@ -150,6 +150,35 @@ class AlunosController extends Controller
         return view('secretaria.alunos', compact('users'))->with(request()->input('page'));
     }
 
+    public function senha() {
+        return view('alunos.senha');
+    }
+
+    public function alterarsenha($id, Request $request){
+        $user = Auth::user();
+
+        $request->validate([
+            'senhaantiga' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ]);
+        if(!hash::check($request->senhaantiga,auth()->user()->password)){
+            return back()->with("erro", "Senha incorreta");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        if($user->role == 1){
+            return redirect('/secretaria/dashboard');
+        }
+        elseif($user->role == 2){
+            return redirect('/alunos/dashboard');
+        }
+        else{
+            return redirect('/professores/dashboard');
+        }
+    }
     
 }
 

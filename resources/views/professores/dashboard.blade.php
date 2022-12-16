@@ -22,6 +22,7 @@
                 
                 <a class="btn btn-primary" href="/professores/professores" role="button">Editar Seus Dados</a>
                 <a class="btn btn-primary" href="/professores/cursos" role="button">Cursos Ministrados</a>
+                <a class="btn btn-primary" href="/professor/nota/" role="button">Adicionar Nota a um Aluno</a>
             </div>
         </div>
     </div>

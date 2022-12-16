@@ -53,3 +53,5 @@ Route::get('/link/professor/relacao', [CursoController::class, 'linkprofessor'])
 Route::post('/link/aluno/relacao', [CursoController::class, 'linkaluno'])->middleware('auth');
 Route::get('/professores/professores', [ProfessoresController::class, 'view']);
 Route::get('/professores/cursos', [CursoController::class, 'view']);
+Route::post('/professor/nota/', [ProfessoresController::class, 'notas'])->middleware('auth');
+Route::get('/professor/atribui/nota/', [ProfessoresController::class, 'atribuinota'])->middleware('auth');

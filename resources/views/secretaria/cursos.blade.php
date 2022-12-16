@@ -115,6 +115,7 @@
        
        <table class="table table-bordered">
        <tr>
+           <th>ID</th>
            <th>Nome</th>
 
            <th width="280px">Action</th>
@@ -122,6 +123,7 @@
        
        @foreach ($cursos3 as $curso)
        <tr>
+           <td>{{ $curso->id }}</td>
            <td>{{ $curso->name }}</td>
            
            <td>
