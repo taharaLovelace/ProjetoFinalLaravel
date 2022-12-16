@@ -4,6 +4,7 @@
 
 @section('content')
 
+@if(Auth::user()->role == 1)
 <h1 class="d-flex justify-content-center my-2" style="background-color:#F2A340">Atribua um Professor ao Curso</h1>
 <li class="nav-item dropdown d-flex justify-content-center my-2">
     <button id="navbarDropdown" class="nav-link dropdown-toggle " style=" border-radius:6px; color:black;" role="button" data-bs-toggle="dropdown" aria-haspopup="true" >
@@ -71,15 +72,66 @@
     <button class ="btn btn-primary">Relacionar Professor</button>
     </div>
     </form>
+
+    <h1 class="d-flex justify-content-center my-2" style="background-color:skyblue">Atribua um Aluno ao Curso</h1>
+    <li class="nav-item dropdown d-flex justify-content-center my-2">
+        <button id="navbarDropdown" class="nav-link dropdown-toggle " style=" border-radius:6px; color:black;" role="button" data-bs-toggle="dropdown" aria-haspopup="true" >
+            <span id="textoaluno"></span>
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            @foreach ($users as $user)
+            @if($user->role == 2)
+            <button class="dropdown-item"  onclick="alunobutton( '{{ $user->name }}', ' {{ $user->id }}' )">
+            {{ $user->name}}
+            </button>
+            @endif
+            @endforeach
+
+        </div>
+
+    </li>
+
+
+    <li class="nav-item dropdown d-flex justify-content-center my-2">
+        <button id="navbarDropdown" class="nav-link dropdown-toggle " style=" border-radius:6px; color:black;"  role="button" data-bs-toggle="dropdown" aria-haspopup="true" >
+            <span id="textocurso1"></span>
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            @foreach($cursos as $curso)
+            <button class="dropdown-item"  onclick="cursobutton1('{{ $curso->name }}', '{{ $curso->id}}')">
+            {{ $curso->name}}
+            </button>
+            @endforeach
+        </div>
+    </li>
+    <div class="d-flex justify-content-center">
+    <form action="/link/aluno/relacao" method="POST">
+        @csrf
+        <a href="/cursos/join/{{ $curso->id }}" class="btn btn-primary" id="curso-submit" onclick="event.preventDefault(); this.closest('form').submit();" style="background-color:skyblue">Participar do Curso</a>
+    </form>
+    </div>
+    @endif
+
+    @if(Auth::user()->role != 1)
+    <h1>Você não tem permissão!</h1>
+    <a href="/" class="btn btn-primary">Retornar</a>
+    @endif
     
     
     <script>
         textoprof = 'Escolha um professor';
         textocurso = 'Escolha um curso';
+        textoaluno = 'Escolha um aluno';
+        textocurso1 = 'Escolha um curso';
+
         
 
     document.getElementById("textoprof").innerHTML = textoprof;
+    document.getElementById("textoaluno").innerHTML = textoaluno;
     document.getElementById("textocurso").innerHTML = textocurso;
+    document.getElementById("textocurso1").innerHTML = textocurso1;
 
 
 
@@ -89,9 +141,20 @@
 
     }
 
+    function alunobutton(alunonome,alunoid){
+        document.getElementById("textoaluno").innerHTML = alunonome;
+        document.getElementById("alunoid").value = alunoid;
+
+    }
+
     function cursobutton(cursonome,cursoid){
         document.getElementById("textocurso").innerHTML = cursonome;
         document.getElementById("cursoid").value = cursoid;
+    }
+
+    function cursobutton1(cursonome1,cursoid1){
+        document.getElementById("textocurso1").innerHTML = cursonome1;
+        document.getElementById("cursoid1").value = cursoid1;
     }
 
     </script>

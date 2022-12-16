@@ -1,8 +1,16 @@
 @extends('layouts.barrainicial')
 
+@section('title', 'Editar Curso')
+
 @section('content')
 
-<div class="row">
+@if(Auth::user()->role != 1)
+    <h1>Você não tem permissão!</h1>
+    <a href="/" class="btn btn-primary">Retornar</a>
+@endif
+
+    @if(Auth::user()->role == 1)
+    <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Editar Curso</h2>
@@ -65,5 +73,6 @@
 
 
     </form>
+    @endif
 
 @endsection

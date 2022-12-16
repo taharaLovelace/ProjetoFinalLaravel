@@ -3,8 +3,14 @@
 @section('title', 'Criar Cursos')
 
 @section('content')
-<div class="container">
-<br>
+    @if(Auth::user()->role != 1)
+        <h1>Você não tem permissão!</h1>
+        <a href="/" class="btn btn-primary">Retornar</a>
+    @endif
+    
+    @if(Auth::user()->role == 1)
+    <div class="container">
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -44,6 +50,7 @@
             </div>
         </div>
     </div>
+    @endif
             
 
 @endsection

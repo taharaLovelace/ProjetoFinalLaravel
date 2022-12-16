@@ -52,10 +52,13 @@ Inserir dados na database
 php artisan migrate --seed
 ```
 
-//ROTAS
-[Site](http://localhost:8080/)<br>
+###ROTAS
+<br>
+[Site](http://localhost:8080/)
+<br>
 [PHPMYADMIN](http://localhost:8081/)
 
+Secretaria login -> email: secretaria@secretaria.com | senha: 123456789
 
 
    

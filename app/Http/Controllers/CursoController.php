@@ -71,15 +71,19 @@ class CursoController extends Controller
 
     public function view () {
         $cursos = Curso::latest()->paginate(15);
-        
-        $notinha = curso_user()->nota;
 
-        return view('secretaria.cursos', ['notinha' => $notinha], compact('cursos'))->with(request()->input('page'));
+        $user = Auth::user();
+        $notinha = CursoUser::where('user_id','=',$user->id)->get();
+        $cursos2 = $user->cursos;
+        $cursos3 = Curso::where('user_id','=',$user->id)->get();
+
+        return view('secretaria.cursos', ['notinha' => $notinha, 'cursos2' => $cursos2, 'cursos3' => $cursos3], compact('cursos'))->with(request()->input('page'));
     }
 
     public function destroy(Curso $curso)
     {
-        //
+        $curso->delete();
+        return redirect('/secretaria/cursos');
     }
 
     public function edit(Curso $curso)
@@ -129,8 +133,9 @@ class CursoController extends Controller
 
         $users = User::all();
         $cursos = Curso::all();
+        $curso_user = CursoUser::all();
     
-        return view('secretaria.relacao',[ 'cursos' => $cursos, 'users' => $users]);
+        return view('secretaria.relacao',[ 'cursos' => $cursos, 'users' => $users, 'curso_user' => $curso_user]);
     }
 
     public function linkprofessor(Request $request){
@@ -145,5 +150,18 @@ class CursoController extends Controller
         $curso->save();
         
         return back();
+    }
+
+    public function linkaluno(Request $request){
+        $user = Auth::user()->role;
+        if ($user !=  '1'){
+            return redirect('/');
+        }
+        $curso = curso::findOrFail($request->cursoid);
+        $user = user::findOrFail($request->id);
+        $user->cursos()->attach($id);
+        $curso = Curso::findOrFail($id);
+
+        return redirect('/cursos')->with('msg', 'Voce inscreveu no curso ' . $curso->name);
     }
 }
